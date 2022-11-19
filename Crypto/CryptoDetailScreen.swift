@@ -11,6 +11,8 @@ struct CryptoDetailScreen: View {
     
     let crypto: CryptoCurrency
     
+    @State var quantity: Float = 1
+    
     var body: some View {
         VStack {
             HStack {
@@ -29,7 +31,7 @@ struct CryptoDetailScreen: View {
                     .cornerRadius(.infinity)
             }
             VStack(spacing: 16) {
-                Text("\(String(format: "%.2f", crypto.value))")
+                Text("\(String(format: "%.2f", quantity * crypto.value))")
                     .foregroundColor(Color("Text"))
                     .font(.system(size: 32, weight: .bold))
                 HStack {
@@ -41,14 +43,14 @@ struct CryptoDetailScreen: View {
                     }
                 }
                 .foregroundColor(crypto.evolution > 0 ? Color("AccentGreen") : Color("AccentRed"))
-                Text("Quantité : 1")
+                Text("Quantité : \(quantity)")
                     .foregroundColor(Color("Text2"))
             }
             
             Spacer()
             HStack  {
                 Button {
-                    //print("Hello world")
+                    quantity = quantity - 1
                 } label: {
                     Text("Vendre")
                         .foregroundColor(Color(.white))
@@ -60,7 +62,7 @@ struct CryptoDetailScreen: View {
                         
                 }
                 Button {
-                    //print("Hello world")
+                    quantity = quantity + 1
                 } label: {
                     Text("Acheter")
                         .foregroundColor(Color("Background"))
