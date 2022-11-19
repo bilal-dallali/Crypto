@@ -76,6 +76,7 @@ struct CryptoDetailScreen: View {
         }
         .padding()
         .background(Color("Background"))
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

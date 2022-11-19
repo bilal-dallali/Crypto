@@ -19,7 +19,11 @@ struct ContentView: View {
                         .padding(.vertical, 24)
                         .padding(.horizontal, 16)
                     ForEach(cryptoList, id: \.name) { crypto in
-                        CryptoCell(crypto: crypto)
+                        NavigationLink {
+                            CryptoDetailScreen(crypto: crypto)
+                        } label: {
+                            CryptoCell(crypto: crypto)
+                        }
                     }
                 }
                 .padding()
@@ -27,6 +31,7 @@ struct ContentView: View {
             .background(Color("Background"))
             .navigationBarHidden(true)
         }
+        .accentColor(.white)
     }
 }
 
